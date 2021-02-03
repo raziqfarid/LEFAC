@@ -31,7 +31,7 @@ public final class RemoteFeedLoader: FeedLoader {
 	}
 }
 
-private class FeedMapper {
+final private class FeedMapper {
 	private struct Root: Decodable {
 		let items: [Item]
 		
@@ -51,7 +51,7 @@ private class FeedMapper {
 		}
 	}
 	
-	static var OK_200: Int { 200 }
+	private static var OK_200: Int { 200 }
 	
 	static func map(_ data: Data, _ response: HTTPURLResponse) -> FeedLoader.Result {
 		guard response.statusCode == OK_200,
