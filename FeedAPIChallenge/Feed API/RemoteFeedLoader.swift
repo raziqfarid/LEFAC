@@ -31,25 +31,25 @@ public final class RemoteFeedLoader: FeedLoader {
 }
 
 private final class FeedMapper {
-	fileprivate struct Root: Decodable {
-		fileprivate let items: [APIFeedImage]
+	private struct Root: Decodable {
+		let items: [APIFeedImage]
 		
-		fileprivate var feedImages: [FeedImage] {
+		var feedImages: [FeedImage] {
 			items.map { $0.feedImage }
 		}
 	}
 
-	fileprivate struct APIFeedImage: Decodable {
-		fileprivate let id: UUID
-		fileprivate let description: String?
-		fileprivate let location: String?
-		fileprivate let url: URL
+	private struct APIFeedImage: Decodable {
+		let id: UUID
+		let description: String?
+		let location: String?
+		let url: URL
 		
-		fileprivate var feedImage: FeedImage {
+		var feedImage: FeedImage {
 			FeedImage(id: id, description: description, location: location, url: url)
 		}
 		
-		fileprivate init(id: UUID, description: String?, location: String?, url: URL) {
+		private init(id: UUID, description: String?, location: String?, url: URL) {
 			self.id = id
 			self.description = description
 			self.location = location
