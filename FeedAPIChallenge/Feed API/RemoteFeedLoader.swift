@@ -32,14 +32,14 @@ public final class RemoteFeedLoader: FeedLoader {
 
 private final class FeedMapper {
 	private struct Root: Decodable {
-		let items: [APIFeedImage]
+		let items: [Item]
 		
 		var feedImages: [FeedImage] {
 			items.map { $0.feedImage }
 		}
 	}
 
-	private struct APIFeedImage: Decodable {
+	private struct Item: Decodable {
 		let id: UUID
 		let description: String?
 		let location: String?
